@@ -53,10 +53,10 @@ public class DriveIOTalonFX extends CommandSwerveDrivetrain implements DriveIO {
 
         if(telemetryCache == null) return;
 
+        BaseStatusSignal.refreshAll(yaw, angularYawVelocity, accelerationX, accelerationY);
+
         drivetrainIOInputs.swerveRequest = currentSwerveRequest;
         drivetrainIOInputs.updateFromSwerveDriveState(telemetryCache.get());
-
-        BaseStatusSignal.refreshAll(yaw, angularYawVelocity, accelerationX, accelerationY);
 
         drivetrainIOInputs.angle = yaw.getValueAsDouble();
         drivetrainIOInputs.angularVelocity = angularYawVelocity.getValueAsDouble();
