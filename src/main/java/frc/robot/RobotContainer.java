@@ -47,6 +47,21 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
+
+        switch(Constants.CURR_MODE) {
+            case REAL:
+
+                break;
+
+            case SIM:
+
+                break;
+
+            default:
+
+                break;
+
+        }
         autoChooser = AutoBuilder.buildAutoChooser("Tests");
         SmartDashboard.putData("Auto Mode", autoChooser);
 
