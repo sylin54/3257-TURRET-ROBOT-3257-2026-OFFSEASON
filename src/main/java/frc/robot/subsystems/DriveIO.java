@@ -38,6 +38,9 @@ public interface DriveIO {
         }
 
         public void updateFromSwerveDriveState(SwerveDriveState stateIn) {
+
+            if(stateIn == null) return;
+
             this.pose = stateIn.Pose;
             this.successfulDaqs = stateIn.SuccessfulDaqs;
             this.failedDaqs = stateIn.FailedDaqs;
@@ -51,9 +54,9 @@ public interface DriveIO {
         }
     }
 
-    void updateInputs(DriveIOInputs drivetrainIOInputs);
+    default void updateInputs(DriveIOInputs drivetrainIOInputs) {}
 
-    void resetOdometry(Pose2d pose);
+    default void resetOdometry(Pose2d pose) {}
 
-    void setControl(SwerveRequest swerveRequest);
+    default void setControl(SwerveRequest swerveRequest) {}
 }

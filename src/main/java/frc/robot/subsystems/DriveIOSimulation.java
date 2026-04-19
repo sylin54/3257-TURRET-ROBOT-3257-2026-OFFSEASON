@@ -29,19 +29,9 @@ public class DriveIOSimulation extends CommandSwerveDrivetrain implements DriveI
 
     private double m_lastSimTime = 0;
     private Notifier m_simNotifier;
-    
-    //we cache the state so we don't have to update it constantly
-    private AtomicReference<SwerveDriveState> telemetryCache = new AtomicReference<>();
-
-    Consumer<SwerveDriveState> telemetryConsumer =
-        swerveDriveState -> {
-            telemetryCache.set(swerveDriveState.clone());
-        };
 
     public DriveIOSimulation(SwerveDrivetrainConstants swerveDrivetrainConstants, SwerveModuleConstants<?, ?, ?>... modules) {
         super(swerveDrivetrainConstants, modules);
-
-        registerTelemetry(telemetryConsumer);
 
         Pigeon2 pigeon2 = getPigeon2();
 
@@ -74,10 +64,9 @@ public class DriveIOSimulation extends CommandSwerveDrivetrain implements DriveI
     @Override
     public void updateInputs(DriveIOInputs drivetrainIOInputs) {
 
-        if(telemetryCache == null) return;
 
         drivetrainIOInputs.swerveRequest = currentSwerveRequest;
-        drivetrainIOInputs.updateFromSwerveDriveState(telemetryCache.get());
+        drivetrainIOInputs.updateFromSwerveDriveState(getState());
 
         BaseStatusSignal.refreshAll(yaw, angularYawVelocity, accelerationX, accelerationY);
 
