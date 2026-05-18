@@ -15,6 +15,7 @@ import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.LinearAcceleration;
 
+//adapter/strategy pattern class to convert from the CommandSwerveDrivetrain to our DriveIO interface, which is what the rest of our code uses to interact with the drivetrain. This allows us to easily swap out the drivetrain implementation without affecting the rest of our code.
 public class DriveIOTalonFX extends CommandSwerveDrivetrain implements DriveIO {
 
     private String currentSwerveRequest;

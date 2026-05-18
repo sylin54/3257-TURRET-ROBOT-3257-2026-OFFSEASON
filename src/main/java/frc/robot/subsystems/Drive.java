@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 
 import org.littletonrobotics.junction.Logger;
 
+import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -13,13 +14,33 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Drive extends SubsystemBase{
 
-    private SwerveRequest.FieldCentric fieldCentric = new SwerveRequest.FieldCentric();
+    private SwerveRequest.FieldCentric fieldCentric = new SwerveRequest.FieldCentric().withDriveRequestType(DriveRequestType.Velocity);
+    private SwerveRequest.RobotCentric robotCentric = new SwerveRequest.RobotCentric().withDriveRequestType(DriveRequestType.Velocity);
 
     private DriveIO driveIO;
     private DriveIOInputsAutoLogged inputs = new DriveIOInputsAutoLogged();
 
     public Drive(DriveIO driveIO) {
         this.driveIO = driveIO;
+
+        // AutoBuilder.configure(
+        //     this::getPose,
+        //     this::resetPose,
+        //     this::getChassisSpeeds,
+        //     this::runVelocityPathplanner,
+        //     DriveConstants.PATHPLANNER_CONTROLLER,
+        //     DriveConstants.PP_CONFIG,
+        //     () -> DriverStation.getAlliance().orElse(Alliance.Blue) == Alliance.Red,
+        //     this);
+        // Pathfinding.setPathfinder(new LocalADStarAK());
+        // PathPlannerLogging.setLogActivePathCallback(
+        //     (activePath) -> {
+        //     Logger.recordOutput("Odometry/Trajectory", activePath.toArray(new Pose2d[0]));
+        //     });
+        // PathPlannerLogging.setLogTargetPoseCallback(
+        //     (targetPose) -> {
+        //     Logger.recordOutput("Odometry/TrajectorySetpoint", targetPose);
+        // });
     }
 
     @Override
