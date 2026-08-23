@@ -14,10 +14,10 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.generated.TunerConstants;
-import frc.robot.subsystems.Drive;
-import frc.robot.subsystems.DriveIO;
-import frc.robot.subsystems.DriveIOSimulation;
-import frc.robot.subsystems.DriveIOTalonFX;
+import frc.robot.subsystems.drive.Drive;
+import frc.robot.subsystems.drive.DriveIO;
+import frc.robot.subsystems.drive.DriveIOSimulation;
+import frc.robot.subsystems.drive.DriveIOTalonFX;
 
 public class RobotContainer {
 
