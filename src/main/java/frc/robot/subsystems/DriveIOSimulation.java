@@ -1,8 +1,5 @@
 package frc.robot.subsystems;
 
- import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-
 import com.ctre.phoenix6.BaseStatusSignal;
 import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.Utils;
