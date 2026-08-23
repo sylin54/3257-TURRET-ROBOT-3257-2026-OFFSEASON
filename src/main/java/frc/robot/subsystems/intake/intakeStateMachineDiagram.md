@@ -28,7 +28,6 @@ stateDiagram-v2
         INTAKE_REQUESTED --> DEPLOYING_INTAKE
     end note
 
-
     note right of DISABLED
         From any state:
         - If the robot is disabled, transition to DISABLED
