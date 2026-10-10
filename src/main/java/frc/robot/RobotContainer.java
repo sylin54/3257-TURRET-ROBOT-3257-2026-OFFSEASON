@@ -18,6 +18,9 @@ import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.DriveIO;
 import frc.robot.subsystems.drive.DriveIOSimulation;
 import frc.robot.subsystems.drive.DriveIOTalonFX;
+import frc.robot.subsystems.intake.Intake;
+import frc.robot.subsystems.intake.IntakeIO;
+import frc.robot.subsystems.intake.IntakeSimulationIO;
 
 public class RobotContainer {
 
@@ -28,11 +31,15 @@ public class RobotContainer {
 
     private final Drive drive;
 
+    private final Intake intake;
+
 
     public RobotContainer() {
 
         switch(Constants.CURR_MODE) {
             case REAL:
+
+                intake = new Intake(new IntakeIO() {});
 
                 drive =
                     new Drive(
@@ -46,6 +53,8 @@ public class RobotContainer {
                 break;
 
             case SIM:
+
+                intake = new Intake(new IntakeSimulationIO());
 
                 drive =
                     new Drive(
@@ -61,6 +70,7 @@ public class RobotContainer {
             default:
 
                 drive = new Drive(new DriveIO() {});
+                intake = new Intake(new IntakeSimulationIO() {});
 
                 break;
 
