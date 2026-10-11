@@ -1,7 +1,5 @@
 package frc.robot.subsystems.intake;
 
-import java.lang.Thread.State;
-
 import org.littletonrobotics.junction.Logger;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -9,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.util.VortechsUtil;
 
+//basic intkae subsystem. Not fully feature complete, just enough for simulation.
 public class Intake extends SubsystemBase {
 
     private IntakeIOInputsAutoLogged inputs = new IntakeIOInputsAutoLogged();
